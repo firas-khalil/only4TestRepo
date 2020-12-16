@@ -1,0 +1,15 @@
+ footer{
+        text-align: center!important;
+        background: ;
+        position: fixed;
+        bottom: 0;
+        width: -webkit-fill-available;
+        }
+
+.bs-example{
+        margin: 20px;
+    }
+
+.bg-dark {
+    background-color: #3e7c80!important;
+}
