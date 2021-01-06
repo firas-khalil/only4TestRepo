@@ -16,7 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -48,12 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'TimeTracker',
-
     # "bootstrap4",
-    # 'bootstrap_datepicker_plus'
-    'TimeTracker'
-
-    # 'time_tracker'
 ]
 
 SITE_ID = 1
@@ -95,11 +90,11 @@ ROOT_URLCONF = 'time_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates", ""
-            "time_tracker/templates/",
-            os.path.normpath(os.path.join(BASE_DIR, 'templates')),
-            os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
+        'DIRS': ["templates", "",
+                 # "time_tracker/templates/",
+                 os.path.normpath(os.path.join(BASE_DIR, 'templates')),
+                 os.path.join(BASE_DIR, 'templates', 'allauth'),
+                 # os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -115,7 +110,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'time_tracker.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -127,20 +121,19 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    #{
+    # {
     #    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    #},
-    #{
+    # },
+    # {
     #    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    #},
-    #{
+    # },
+    # {
     #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    #},
-    #{
+    # },
+    # {
     #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    #},
+    # },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

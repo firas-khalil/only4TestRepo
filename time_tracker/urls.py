@@ -15,19 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
 from django.views.generic import TemplateView
-
 from django.urls import path, include
 from TimeTracker import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="layout/home.html")),
+    # path('', TemplateView.as_view(template_name="layout/list.html")),
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    url(r'^accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('', include('TimeTracker.urls')),
-    # path('index/', views.list, name='tasks'),
-    # path('', include('TimeTracker.urls'))
-
 ]

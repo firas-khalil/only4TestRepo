@@ -1,9 +1,11 @@
 from django import forms
-<<<<<<< HEAD
 from django.forms import ModelForm, DateInput
 from django.contrib.admin.widgets import AdminDateWidget
 from django.utils.timezone import localtime
 from .models import Post
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from .models import Company
 
 
 class dateTime(forms.DateInput):
@@ -19,10 +21,6 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
-=======
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from .models import Company
 
 
 class MyCustomSignupForm(UserCreationForm):
@@ -31,4 +29,3 @@ class MyCustomSignupForm(UserCreationForm):
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2", "company"]
->>>>>>> origin/master
