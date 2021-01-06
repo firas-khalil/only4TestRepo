@@ -1,3 +1,6 @@
+from django.shortcuts import render, redirect
+from .forms import MyCustomSignupForm
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -7,8 +10,7 @@ from .forms import *
 
 # Create your views here.
 def home(request):
-    return render(request, "layout/home.html")
-
+    return render(request, "layout/home.html", {})
 
 def list(request):
     tasks = Post.objects.all()
@@ -90,3 +92,18 @@ def end_time(request, pk):
 #         'form': form}
 #
 #     return render(request, 'layout/list.html', context)
+
+def signup(request):
+    if request.methods == 'POST':
+        form = MyCustomSignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/accounts/profile')
+    else:
+        form = MyCustomSignupForm()
+
+    return render(request, 'account/signup.html', {'form': form})
