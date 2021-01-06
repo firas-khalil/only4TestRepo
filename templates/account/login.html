@@ -1,0 +1,46 @@
+{% extends 'layout\base.html' %}
+{% block content %}
+{% load i18n %}
+
+{% load account socialaccount %}
+
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
+
+<div class="card-body d-flex justify-content-center">
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+        <div class="socialaccount_ballot ">
+            <p class="socialaccount_providers">
+                {%   include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </p>
+        </div>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input class="form-control" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <div justify-content-center>
+            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?"                %}</a>
+        </div>
+        <br>
+        <button class="primaryAction btn btn-primary btn-lg btn-block" type="submit" >{% trans "Sign in" %}</button>
+
+        <div class="card-footer text-muted">
+            <p class="text-secondary">{% blocktrans %}Not registered? <a href="{{ signup_url }}">Create Account</a>.{% endblocktrans %}</p>
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}
