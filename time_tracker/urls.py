@@ -25,8 +25,9 @@ urlpatterns = [
     # path('', TemplateView.as_view(template_name="layout/list.html")),
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls')),
     path('', include('TimeTracker.urls')),
-
+    # path('index/', views.list, name='tasks'),
+    # path('', include('TimeTracker.urls'))
 
 ]

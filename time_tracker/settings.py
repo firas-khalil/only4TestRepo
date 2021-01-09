@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import os
 
@@ -37,12 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'TimeTracker',
-
-
-    # "bootstrap4",
-    # 'bootstrap_datepicker_plus'
-
-    # 'time_tracker'
 ]
 
 SITE_ID = 1

@@ -12,6 +12,7 @@ from .forms import *
 def home(request):
     return render(request, "layout/home.html", {})
 
+
 def list(request):
     tasks = Post.objects.all()
 
