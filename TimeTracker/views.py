@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MyCustomSignupForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
@@ -93,7 +93,7 @@ def end_time(request, pk):
 #
 #     return render(request, 'layout/list.html', context)
 
-def signup(request):
+def signup(request, pk):
     if request.methods == 'POST':
         form = MyCustomSignupForm(request.POST)
         if form.is_valid():
@@ -102,7 +102,8 @@ def signup(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/accounts/profile')
+            company = get_object_or_404(Company, pk=pk)
+            return redirect('layout/list.html', {'company': company})
     else:
         form = MyCustomSignupForm()
 
